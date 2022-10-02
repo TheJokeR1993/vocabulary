@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/TheJokeR1993/vocabulary.git/static/css/main.9bb8b811.css",
+    "main.js": "/TheJokeR1993/vocabulary.git/static/js/main.3fc6e98e.js",
+    "index.html": "/TheJokeR1993/vocabulary.git/index.html",
+    "main.9bb8b811.css.map": "/TheJokeR1993/vocabulary.git/static/css/main.9bb8b811.css.map",
+    "main.3fc6e98e.js.map": "/TheJokeR1993/vocabulary.git/static/js/main.3fc6e98e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9bb8b811.css",
+    "static/js/main.3fc6e98e.js"
+  ]
+}
