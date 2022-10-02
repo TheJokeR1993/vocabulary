@@ -2,6 +2,7 @@
   "name": "jetup",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://thejoker1993.github.io/minimo/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
