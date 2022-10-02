@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import Header from "./Component/Header";
+import MainComponent from "./Component/MainComponent";
+import { R_F_look_lf } from "./redux/wordsReducer/reducerWords";
 
-function App() {
+const mapStateToProps = (state) => {
+  return {
+    allWord: state.words.allWord,
+  };
+};
+
+function App(props) {
+  const [spiner, setSpiner] = useState(true);
+  useEffect(() => {
+    props.R_F_look_lf(setSpiner);
+  }, []);
+  if (spiner)
+    return (
+      <div className="loading">
+        <img
+          src="https://static.wixstatic.com/media/fdb99c_e136c7e8af7f48a592b05aa0f1afe6ea~mv2.gif"
+          alt="loading"
+        />
+      </div>
+    );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <MainComponent />
     </div>
   );
 }
 
-export default App;
+export default connect(mapStateToProps, { R_F_look_lf })(App);
