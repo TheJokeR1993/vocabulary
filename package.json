@@ -2,7 +2,7 @@
   "name": "jetup",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://thejoker1993.github.io/minimo/",
+  "homepage": "https://thejoker1993.github.io/vocabulary/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -26,7 +26,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predploy": "npm run build",
+    "deploy": "gh-pages -d build -b master"
   },
   "eslintConfig": {
     "extends": [
