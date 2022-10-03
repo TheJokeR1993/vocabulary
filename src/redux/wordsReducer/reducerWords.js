@@ -27,15 +27,15 @@ const reducerWords = (state = wordState, action) => {
   switch (action.type) {
     case T.CHANGE_WORD:
       const look_change_word = state.allWord.map((i, index, arr) => {
-        if (i.id == action.id) {
+        if (i.id === action.id) {
           let isBool = state.allWord.find(
-            (el) => el[action.str].toLowerCase() == action.value.toLowerCase()
+            (el) => el[action.str].toLowerCase() === action.value.toLowerCase()
           );
           let isBoolLang =
-            action.str == "eng"
+            action.str === "eng"
               ? action.value.replace(/^[A-Za-z ']+$/, "")
               : action.value.replace(/^[а-щА-ЩЬьЮюЯяЇїІіЄєҐґ ']+$/, "");
-          
+
           !isBool &&
             !isBoolLang &&
             (i[action.str] =
@@ -73,14 +73,14 @@ const reducerWords = (state = wordState, action) => {
       return { ...state, allWord: arr3 };
     case T.CHANGE_INPUT:
       const arr = state.addWord.map((i, index) => {
-        action.str == "en"
-          ? index == 0 && (i = action.value)
-          : index == 1 && (i = action.value);
+        action.str === "en"
+          ? index === 0 && (i = action.value)
+          : index === 1 && (i = action.value);
         return i;
       });
 
       return { ...state, addWord: arr, error: false };
-      
+
     case T.START:
       return {
         ...state,
@@ -109,7 +109,7 @@ const reducerWords = (state = wordState, action) => {
         number: action.number,
         smile: action.smile,
         check: action.check,
-        };
+      };
       state.history.unshift(obj);
       return { ...state, prevPlay: obj, play: "" };
     case T.LOOK_LF:
@@ -137,8 +137,9 @@ const R_F_add_history = (number, smile, check) => ({
   type: T.ADD_HISTORY,
 });
 export const add_history = (play) => (dispatch) => {
+  
   const number = play.question.filter(
-    (i, index) => i.ua === play.answer[index]
+    (i, index) => i.ua === play.answer[index]||i.eng === play.answer[index]
   ).length;
   const check = play.question.map((i, index) => {
     const newArray = [
@@ -160,15 +161,13 @@ const start = (question, options, lang) => ({
   type: T.START,
 });
 
-export const R_F_start = (arr,lang) => (dispatch) => {
+export const R_F_start = (arr, lang) => (dispatch) => {
   console.log(arr);
   const arrPlay = random(arr.length, 10);
   const question = arrPlay.map((i) => arr[i]);
   const options = arrPlay
     .map((i) => random(arr.length, 4, [i]))
-    .map((i) =>
-      shuffle(i).map((ii) => arr[ii][lang === "ua" ? "eng" : "ua"])
-    );
+    .map((i) => shuffle(i).map((ii) => arr[ii][lang === "ua" ? "eng" : "ua"]));
   dispatch(start(question, options, lang));
 };
 

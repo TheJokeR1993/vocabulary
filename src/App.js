@@ -14,7 +14,7 @@ function App(props) {
   const [spiner, setSpiner] = useState(true);
   useEffect(() => {
     props.R_F_look_lf(setSpiner);
-  }, []);
+  }, [spiner]);
   if (spiner)
     return (
       <div className="loading">

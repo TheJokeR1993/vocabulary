@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
 };
 
 const Rezult = ({ history }) => {
-    console.log(history);
+  
   const allGame = useMemo(() => {
     return history.map((i, index) => (
       <RezultItem
@@ -24,19 +24,18 @@ const Rezult = ({ history }) => {
   let allRezult =
     history.length >= 2
       ? history
-            .map((i) => i.number)
-            .reduce((first, second) => first + second, 0) /
-            history.length
+          .map((i) => i.number)
+          .reduce((first, second) => first + second, 0) / history.length
       : history[0].number;
 
   return (
     <div className="container history">
-        <div className="all_rezult_history">
-            <img alt="" src={lookSmile(allRezult)}/>
-           <h2>{Math.round(allRezult*10) }%</h2> 
-           <h2>Play : {history.length}</h2>
-        </div>
-      
+      <div className="all_rezult_history">
+        <img alt="" src={lookSmile(allRezult)} />
+        <h2>{Math.round(allRezult * 10)}%</h2>
+        <h2>Play : {history.length}</h2>
+      </div>
+
       {allGame}
     </div>
   );
