@@ -1,4 +1,4 @@
-import {  useEffect, useRef, useState } from "react";
+import {  memo, useEffect, useRef, useState } from "react";
 
 const WordsItem = ({ item, R_F_delete, R_F_change_word }) => {
   const [inputEnd, setInputEng] = useState(false);
@@ -84,5 +84,8 @@ const WordsItem = ({ item, R_F_delete, R_F_change_word }) => {
     </div>
   );
 };
-
-export default WordsItem;
+const getProps =(prepP,nextP)=>{
+   return prepP.item.eng===nextP.item.eng && prepP.item.ua===nextP.item.ua
+ 
+ }
+export default memo(WordsItem,getProps) ;
